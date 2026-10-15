@@ -1,5 +1,4 @@
-import db from './dexieDB'
-import { v4 as uuidv4 } from 'uuid'
+import Dexie from 'dexie'
 
 export interface Measurement {
   id: string
@@ -11,8 +10,10 @@ export interface Measurement {
   synced?: boolean
 }
 
-const DexieLib = (db as any)
+const db = new Dexie('CrewSignalDB')
 
-export default DexieLib
+db.version(1).stores({
+  measurements: 'id, timestamp, type, synced'
+})
 
-// helper functions kept in services/measurementService.ts
+export default db
