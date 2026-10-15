@@ -6,3 +6,6 @@ pandas
 scipy
 sqlalchemy
 psycopg[binary]
+alembic
+pytest
+httpx
